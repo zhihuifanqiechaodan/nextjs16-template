@@ -40,13 +40,13 @@ export default async function Home() {
           ) : (
             <div className="flex gap-4">
               <Link
-                href="/login"
+                href="/admin/login"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign in
               </Link>
               <Link
-                href="/register"
+                href="/admin/register"
                 className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 py-2.5"
               >
                 Create account <span aria-hidden="true">→</span>
