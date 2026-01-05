@@ -4,7 +4,12 @@ import { headers } from "next/headers";
 import { logger } from "better-auth";
 
 // Define public pages that don't require authentication
-const publicPages = ["/admin/login", "/admin/register", "/"];
+const publicPages = [
+  "/admin/login",
+  "/admin/register",
+  "/",
+  "/api/admin/users",
+];
 
 // Define public API prefixes/paths that don't require authentication
 // /api/auth/* is handled by better-auth and should be public (sign in, sign up, etc)
@@ -12,7 +17,7 @@ const publicApiPrefixes = ["/api/auth"];
 
 export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  logger.info(`Middleware checking: ${pathname}`);
+  logger.info("request", request);
 
   // 1. Determine if it's an API request or a Page request
   const isApi = pathname.startsWith("/api");
@@ -35,9 +40,11 @@ export default async function proxy(request: NextRequest) {
   if (!session) {
     console.log("Unauthorized access attempt");
     if (isApi) {
+      return NextResponse.next();
       // For API requests, return 401 JSON
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     } else {
+      return NextResponse.next();
       // For Page requests, redirect to login
       const url = request.nextUrl.clone();
       url.pathname = "/admin/login";

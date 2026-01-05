@@ -8,6 +8,13 @@
       "when": 1767495482249,
       "tag": "0000_red_lyja",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1767616164937,
+      "tag": "0001_natural_madripoor",
+      "breakpoints": true
     }
   ]
 }

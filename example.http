@@ -1,0 +1,50 @@
+###获取所有用户
+GET http://localhost:3000/api/admin/users
+### 创建分类
+POST http://localhost:3000/api/admin/categories
+Content-Type: application/json
+
+{
+    "name": "热销榜",
+    "sort": 1
+}
+### 创建商品
+POST http://localhost:3000/api/admin/products
+Content-Type: application/json
+
+{
+    "name": "sample",
+    "categoryId": "be22403d-81f8-4b36-b458-35b2c618ac4d",
+    "price": "10",
+    "originalPrice": "12",
+    "description": "sample",
+    "specifications": [
+        {
+            "name": "口味",
+            "options": ["不辣", "微辣", "中辣", "特辣"],
+            "required": true
+        },
+        {
+            "name": "面条",
+            "options": ["细面", "宽面", "刀削面"],
+            "required": true
+        },
+        {
+            "name": "加料",
+            "options": ["加肉", "加蛋", "加青菜"],
+            "required": false
+        }
+    ],
+    "stock": 10,
+    "sort": 1,
+    "status": true
+}
+
+### 获取分类列表
+GET http://localhost:3000/api/admin/categories?pageNum=1&pageSize=5
+
+### 获取商品列表
+GET http://localhost:3000/api/admin/products?pageNum=1&pageSize=5
+
+### 根据分类获取商品列表
+GET http://localhost:3000/api/admin/products?categoryId=be22403d-81f8-4b36-b458-35b2c618ac4d
